@@ -1,0 +1,76 @@
+---OGRENCİ TABLOSU---
+
+CREATE TABLE Ogrenci (
+    Ogr_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ogr_Adi TEXT NOT NULL,
+    Sifre TEXT NOT NULL,
+    fotograf BLOB, -- Eğer fotoğraf binary olarak saklanacaksa
+    bolum TEXT NOT NULL
+)
+
+---İZİN TABLOSU---
+
+CREATE TABLE "IzinTablosu" (
+	"izin_ID"	INTEGER,
+	"KalanIzin"	INTEGER NOT NULL DEFAULT 45,
+	"BaslangicTarihi"	TEXT,
+	"Ogr_ID"	INTEGER,
+	"BitisTarih"	TEXT,
+	"AlinanIzin"	INTEGER,
+	FOREIGN KEY("Ogr_ID") REFERENCES "Ogrenci"("Ogr_ID"),
+	PRIMARY KEY("izin_ID" AUTOINCREMENT)
+)
+
+---VUCUT KİTLE TABLOSU---
+
+CREATE TABLE "VucutKitle" (
+	"Vki_ID"	INTEGER,
+	"boy"	FLOAT NOT NULL,
+	"Kilo"	FLOAT NOT NULL,
+	"Cinsiyet"	TEXT NOT NULL,
+	"Yas"	INTEGER NOT NULL,
+	"Ogr_ID"	INTEGER,
+	"Tarih"	TEXT,
+	"IdealKilo"	REAL,
+	"Durum"	TEXT,
+	"OgrenciAd"	TEXT,
+	"Fark"	REAL,
+	"Vki"	REAL,
+	PRIMARY KEY("Vki_ID" AUTOINCREMENT),
+	FOREIGN KEY("Ogr_ID") REFERENCES "Ogrenci"("Ogr_ID")
+)
+
+--- YURT DUYURULARI ---
+
+CREATE TABLE "YurtDuyurulari" (
+	"Duyuru_ID"	INTEGER,
+	"Duyuru"	TEXT,
+	PRIMARY KEY("Duyuru_ID" AUTOINCREMENT)
+)
+
+--- SABAH KAHVALTISI ---
+
+CREATE TABLE SabahYemegi (
+        Sabahid INTEGER PRIMARY KEY AUTOINCREMENT,
+        KahvaltiAdi TEXT,
+        Yaninda TEXT,
+        Ekstra TEXT
+    )
+
+--- AKSAM YEMEGİ ---
+
+CREATE TABLE AksamYemegi (
+        Aksamid INTEGER PRIMARY KEY AUTOINCREMENT,
+        Yemek TEXT,
+        Yaninda TEXT,
+        Ekstra TEXT
+    )
+
+--- ARIZA TALEP TABLOSU ---
+
+CREATE TABLE ArizaTaleb (
+    ariza_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    arizaYorum TEXT NOT NULL,
+    Ogr_ID INTEGER,
+    FOREIGN KEY (Ogr_ID) REFERENCES Ogrenci(Ogr_ID)
+)
