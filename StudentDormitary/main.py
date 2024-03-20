@@ -906,7 +906,7 @@ class AnaSayfa(QDialog):
             url = "https://weatherapi-com.p.rapidapi.com/current.json" # Hava durumu API'sinin endpoint'i belirlenir.
             querystring = {"q": "39.818663392,34.802663456"}
             headers = {
-                "X-RapidAPI-Key": "d3cee19ac8mshc3f2051cc92a9ccp1e3a8fjsn8d357b01eca1",  # API anahtarınızı buraya ekleyin
+                "X-RapidAPI-Key": "YOUR_API_KEY",  # API anahtarınızı buraya ekleyin
                 "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com" # API'ye gönderilecek parametreler, bu durumda koordinat bilgisi olarak belirlenmiş bir konum (enlem ve boylam) içerir.
             }
             response = requests.get(url, headers=headers, params=querystring) #  Python'un requests kütüphanesi kullanılarak API'ye HTTP GET isteği gönderilir.
